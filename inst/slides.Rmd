@@ -1,0 +1,67 @@
+---
+title: "How to {dplyr}"
+author: "Lennart Oelschl&auml;ger"
+date: 'Last rendered on `r format(Sys.Date(),"%d.%m.%Y")`'
+output: slidy_presentation
+---
+  
+## Why and what 
+
+Welcome to this tiny course on data manipulation in R with [{dplyr}](https://dplyr.tidyverse.org/)! `r emo::ji("wave")`
+
+### Why do we care?
+
+### Why {dplyr}?
+
+### What is this course about?
+
+### What do you need?
+
+Basic R skills + a not-too-old version of R + RStudio
+
+### At the end of the day...
+
+### My sources
+
+### Found mistakes? Have suggestions?
+
+I'm sure you have! Please leave a note [here](https://github.com/loelschlaeger/howtodplyr/issues/new/choose). `r emo::ji("wish")`
+
+## First steps
+
+Load {dplyr}.
+
+```{r}
+# install.packages(dplyr)
+library(dplyr)
+```
+
+## It's your turn
+
+This course includes tutorials! `r emo::ji("sunglasses")`
+
+Executing the following lines gives you access to the course material:
+
+```{r, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("loelschlaeger/howtodplyr")
+library(howtodplyr)
+```
+
+To start the tutorial, type:
+
+```{r, eval = FALSE}
+tutorial()
+```
+
+To open a copy of these slides, type:
+
+```{r, eval = FALSE}
+slides()
+```
+
+To submit an issue on GitHub about this course, type:
+
+```{r, eval = FALSE}
+issue()
+```

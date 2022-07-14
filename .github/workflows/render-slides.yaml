@@ -1,0 +1,42 @@
+on:
+  push:
+    branches: [main, master]
+
+name: render-slides
+
+jobs:
+  render-slides:
+    runs-on: windows-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: r-lib/actions/setup-pandoc@v1
+
+      - uses: r-lib/actions/setup-r@v1
+
+      - uses: r-lib/actions/setup-renv@v1
+      
+      - name: Install dependenciess
+        run: |
+          install.packages(c("remotes","rmarkdown","tidyverse","gapminder",
+                             "socviz","maps","ggrepel","mapproj"))
+          remotes::install_github("hadley/emo")
+        shell: Rscript {0}
+      
+      - name: Render slides
+        run: | 
+          rmarkdown::render("inst/slides.Rmd")
+        shell: Rscript {0}
+      
+      - name: Commit results
+        run: |
+          git config --local user.email "oelschlaeger.lennart@gmail.com"
+          git config --local user.name "Lennart Oelschlaeger"
+          git add 'inst/slides.html'
+          git commit -m 'Rendered slides :construction_worker:'
+          git push origin 

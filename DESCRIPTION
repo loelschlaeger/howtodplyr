@@ -1,0 +1,18 @@
+Package: howtodplyr
+Title: A Tiny Course on {dplyr}
+Version: 0.1.0
+Authors@R: 
+    person("Lennart", "Oelschl\U00E4ger", 
+           email = "oelschlaeger.lennart@gmail.com", 
+           role = c("aut", "cre"))
+Description: Slides and tutorials on {dplyr} for data manipulation in R.
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.0
+Imports: 
+  learnr
+Depends: 
+  R (>= 4.0.0)
+URL: https://github.com/loelschlaeger/howtodplyr
+BugReports: https://github.com/loelschlaeger/howtodplyr/issues

@@ -1,0 +1,49 @@
+---
+title: "Tutorial"
+output: 
+  learnr::tutorial:
+    allow_skip: false
+    progressive: true
+runtime: shiny_prerendered
+description: >
+  The practical part of the "How to {dplyr}" course.
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(dplyr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Part 1: First steps
+
+### From scratch
+
+Try to reproduce ...
+
+```{r first, exercise = TRUE}
+# Hint: x + 1
+```
+
+```{r first-solution}
+x + 1
+```
+
+### Quiz time!
+
+```{r quiz1}
+quiz(
+  question("Question",
+    answer("answer1"),
+    answer("answer2"),
+    answer("answer3", correct = TRUE),
+    answer("answer4", correct = TRUE)
+  ),
+  question("Question",
+    answer("answer1"),
+    answer("answer2", correct = TRUE),
+    answer("answer3"),
+    answer("answer4")
+  )
+)
+```
