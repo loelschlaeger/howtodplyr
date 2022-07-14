@@ -36,6 +36,42 @@ Load {dplyr}.
 library(dplyr)
 ```
 
+Important dplyr verbs to remember
+
+select()	select columns
+
+filter()	filter rows
+
+arrange()	re-order or arrange rows
+
+mutate()	create new columns
+
+summarise()	summarise values
+
+group_by()	allows for group operations in the “split-apply-combine” concept
+
+```{r}
+library(gapminder)
+colnames(gapminder)
+x <- select(gapminder, country, year, pop)
+x <- select(gapminder, -gdpPercap)
+x <- select(gapminder, country:year)
+x <- select(gapminder, starts_with("c"))
+```
+
+ends_with()
+
+contains()
+
+matches()
+
+one_of()
+
+```{r}
+dplyr::starwars
+dplyr::storms
+```
+
 ## It's your turn
 
 This course includes tutorials! `r emo::ji("sunglasses")`

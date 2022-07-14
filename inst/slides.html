@@ -555,21 +555,72 @@ suggestions?</h3>
 <pre><code>## Die folgenden Objekte sind maskiert von &#39;package:base&#39;:
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
+<p>Important dplyr verbs to remember</p>
+<p>select() select columns</p>
+<p>filter() filter rows</p>
+<p>arrange() re-order or arrange rows</p>
+<p>mutate() create new columns</p>
+<p>summarise() summarise values</p>
+<p>group_by() allows for group operations in the “split-apply-combine”
+concept</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(gapminder)</span></code></pre></div>
+<pre><code>## [1] &quot;country&quot;   &quot;continent&quot; &quot;year&quot;      &quot;lifeExp&quot;   &quot;pop&quot;       &quot;gdpPercap&quot;</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">select</span>(gapminder, country, year, pop)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">select</span>(gapminder, <span class="sc">-</span>gdpPercap)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">select</span>(gapminder, country<span class="sc">:</span>year)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">select</span>(gapminder, <span class="fu">starts_with</span>(<span class="st">&quot;c&quot;</span>))</span></code></pre></div>
+<p>ends_with()</p>
+<p>contains()</p>
+<p>matches()</p>
+<p>one_of()</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span>starwars</span></code></pre></div>
+<pre><code>## # A tibble: 87 × 14
+##    name     height  mass hair_color skin_color eye_color birth_year sex   gender
+##    &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1 Luke Sk…    172    77 blond      fair       blue            19   male  mascu…
+##  2 C-3PO       167    75 &lt;NA&gt;       gold       yellow         112   none  mascu…
+##  3 R2-D2        96    32 &lt;NA&gt;       white, bl… red             33   none  mascu…
+##  4 Darth V…    202   136 none       white      yellow          41.9 male  mascu…
+##  5 Leia Or…    150    49 brown      light      brown           19   fema… femin…
+##  6 Owen La…    178   120 brown, gr… light      blue            52   male  mascu…
+##  7 Beru Wh…    165    75 brown      light      blue            47   fema… femin…
+##  8 R5-D4        97    32 &lt;NA&gt;       white, red red             NA   none  mascu…
+##  9 Biggs D…    183    84 black      light      brown           24   male  mascu…
+## 10 Obi-Wan…    182    77 auburn, w… fair       blue-gray       57   male  mascu…
+## # … with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
+## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span>storms</span></code></pre></div>
+<pre><code>## # A tibble: 11,859 × 13
+##    name   year month   day  hour   lat  long status      category  wind pressure
+##    &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;ord&gt;    &lt;int&gt;    &lt;int&gt;
+##  1 Amy    1975     6    27     0  27.5 -79   tropical d… -1          25     1013
+##  2 Amy    1975     6    27     6  28.5 -79   tropical d… -1          25     1013
+##  3 Amy    1975     6    27    12  29.5 -79   tropical d… -1          25     1013
+##  4 Amy    1975     6    27    18  30.5 -79   tropical d… -1          25     1013
+##  5 Amy    1975     6    28     0  31.5 -78.8 tropical d… -1          25     1012
+##  6 Amy    1975     6    28     6  32.4 -78.7 tropical d… -1          25     1012
+##  7 Amy    1975     6    28    12  33.3 -78   tropical d… -1          25     1011
+##  8 Amy    1975     6    28    18  34   -77   tropical d… -1          30     1006
+##  9 Amy    1975     6    29     0  34.4 -75.8 tropical s… 0           35     1004
+## 10 Amy    1975     6    29     6  34   -74.8 tropical s… 0           40     1002
+## # … with 11,849 more rows, and 2 more variables:
+## #   tropicalstorm_force_diameter &lt;int&gt;, hurricane_force_diameter &lt;int&gt;</code></pre>
 </div>
 <div id="its-your-turn" class="slide section level2">
 <h1>It’s your turn</h1>
 <p>This course includes tutorials! 😎</p>
 <p>Executing the following lines gives you access to the course
 material:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;loelschlaeger/howtodplyr&quot;</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(howtodplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;loelschlaeger/howtodplyr&quot;</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(howtodplyr)</span></code></pre></div>
 <p>To start the tutorial, type:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tutorial</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tutorial</span>()</span></code></pre></div>
 <p>To open a copy of these slides, type:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slides</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slides</span>()</span></code></pre></div>
 <p>To submit an issue on GitHub about this course, type:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">issue</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">issue</span>()</span></code></pre></div>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->
